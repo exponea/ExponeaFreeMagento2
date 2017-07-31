@@ -61,12 +61,9 @@ Then you open a terminal application, change to magento root directory and use c
 cd [magento 2 root folder]
 
 php bin/magento setup:upgrade
+php bin/magento setup:di:compile
 
-Wait a second to complete installation process:
-
-After that, if your website is in the production mode, please run the command:
-
-php bin/magento setup:static-content:deploy
+Wait a second to complete installation process.
 
 Finally, coming back to Magento 2 admin to check if Exponea Free extension is installed properly by going to Stores -> Configuration
 
