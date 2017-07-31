@@ -1,0 +1,8 @@
+<script>
+exponeaFree.event({
+    "event_type": "purchase",
+    "total_price": <?php echo $block->getOrder()->getGrandTotal(); ?>,
+    "products": <?php echo json_encode($block->getOrderItems()); ?>
+});
+</script>
+
