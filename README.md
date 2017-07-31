@@ -44,10 +44,6 @@ php bin/magento deploy:mode:set developer
 
 <h2>Step 3: Install and verify the installation</h2>
 
--Install by Composer : You can install the module by Composer (If your server supports Composer). Please go to the Magento folder and run the command:
-
-composer require exponea/module-exponeafree
-
 -Install by uploading files:
 
 You can download as "zip" file and unzip Exponea Free extension or clone this repository by the following commands:
