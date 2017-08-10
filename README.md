@@ -67,5 +67,5 @@ Wait a second to complete installation process.
 
 Finally, coming back to Magento 2 admin to check if Exponea Free extension is installed properly by going to Stores -> Configuration
 
-Copy your public and private tokens in the configuration screen and enable the Exponea Free. 
+Copy your public and private tokens in the configuration screen and enable the Exponea Free. We highly recommend you to import your already existing products to Exponea Free. You can do that by clicking on Import products button after setting the private token, enabling Exponea Free and Saving the changes. 
 

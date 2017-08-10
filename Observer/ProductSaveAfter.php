@@ -12,7 +12,7 @@ class ProductSaveAfter implements ObserverInterface {
         $this->_helper = $helper;
 
         $privateToken = $this->_helper->getPrivateToken();
-        if ($privateToken) {
+        if ($this->_helper->getEnable() && $privateToken) {
             $this->_tracking = new Tracking($privateToken);
         }
     }

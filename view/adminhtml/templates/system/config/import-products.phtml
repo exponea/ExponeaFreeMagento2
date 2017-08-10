@@ -1,0 +1,53 @@
+<p class="note" style="padding-bottom: 10px;"><span>Product updates and imports are sent to Exponea Free automatically when Exponea Free is enabled. To import already existing products use the following button. Don't forget to save any changes in the configuration.</span></p>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function(jQuery){
+
+        var importProductsSpan = jQuery('#import_products_span');
+
+        jQuery('#import_products').click(function () {
+            var params = {};
+            new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                parameters:     params,
+                loaderArea:     false,
+                asynchronous:   true,
+                onCreate: function() {
+                    importProductsSpan.find('.imported').hide();
+                    importProductsSpan.find('.processing').show();
+                    jQuery('#import_products_message_span').text('');
+                },
+                onSuccess: function(response) {
+                    importProductsSpan.find('.processing').hide();
+
+                    var resultText = '';
+                    if (response.status > 200) {
+                        resultText = response.statusText;
+                    } else { 
+                        var json = response.responseJSON;
+                        if (!json.success) {
+                            resultText = json.error;
+                        } else {
+                            resultText = 'Success';
+                            importProductsSpan.find('.imported').show();
+                        }
+                    }
+                    jQuery('#import_products_message_span').text(resultText);
+                },
+                onFailure: function(response) {
+                    importProductsSpan.find('.processing').hide();           
+                    jQuery('#import_products_message_span').text('Error ' + response.status);
+                }
+            });
+        });
+
+    });
+</script>
+<?php echo $block->getButtonHtml() ?>
+<span class="import-products-indicator" id="import_products_span">
+    <img class="processing" hidden="hidden" alt="Importing" style="margin:0 5px" src="<?php echo $block->getViewFileUrl('images/process_spinner.gif') ?>"/>
+    <img class="imported" hidden="hidden" alt="Imported" style="margin:-3px 5px" src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <span id="import_products_message_span"></span>
+</span>
+
